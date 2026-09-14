@@ -2,11 +2,17 @@
 
 > Session close ritual, every session: one line per decision with the why, tomorrow's first move at the top, commit, push. This file is where the Week 12 Extraction gets mined from.
 
-**Tomorrow's first move:** build lib/reglas.js + lib/ruta.js against the packet's test plan, then pages.
+**Tomorrow's first move:** add a card to the class19 team so AI Gateway serves requests → re-run /canal on "Farmacia B" with the real model and compare its contradictions with the simulated reader's two; then /ruta form-first (persona confusions #34, #40, #46).
 
 ---
 
 <!-- newest first: YYYY-MM-DD — decision — why -->
+- 2026-09-13 — NOT fixed this week: /ruta form-first layout, "which papers she is missing" for registration requirements, a concrete action for the transport barrier, course context on the home page — all FRENA/MENOR, and the persona got the right window and deadline on /ruta; the blocking confusions were on /canal and /comparar.
+- 2026-09-13 — Rule R25 added (payer *suggests* its own branches = RIESGO, Condition 4), rules → v0.1.1 — the packet promised "sugiere → RIESGO" but no rule did it; the persona walk exposed the gap (Farmacia B's "se sugerirá el de la Farmacia" changed nothing).
+- 2026-09-13 — /comparar answers first ("same four conditions → either works; watch the route with a pharmacy, the data with a remittance group") and hides the rule×payer table behind a details — persona blocker #30: "Me voy sin saber cuál me conviene"; "Yo defendí la remesa" read as bias and was removed from the user-facing page (it stays in the packet and DECISIONS).
+- 2026-09-13 — Plain decision layer `decisionSimple()` over the rules (BLOQUEA or RIESGO → "NO LO FIRMES ASÍ"; only VERIFICAR → "SE PUEDE FIRMAR, DESPUÉS DE VERIFICAR") + copy-for-WhatsApp change list; exposure table → cards — "cruza" was an unexplained metaphor, the pharmacy column was cut off on a phone, and the coordinator acts through WhatsApp.
+- 2026-09-13 — PERSONA FIX (worst confusion): the verdict waits for the contract; each contradiction offers "Usar lo que dice el contrato" — the LLM only proposes a term value, the coordinator confirms with one tap, the rules recalculate — Lupita read "CRUZA CON CONDICIONES · 0 bloquean" (shown before the text was read) as "sign", and the reading that exposed the patient phone list never changed it: two opposite answers on one screen.
+- 2026-09-13 — Mechanical pass: two bugs fixed with regression tests — PII guard missed a phone number followed by a period (production curl returned 200 instead of 400); handoff deadline computed in UTC shifted a day after 18:00 CDMX (seen in the /ruta screenshot).
 - 2026-09-13 — Presets include my own favored payer (remittance) failing as it is typically offered — the Adversary attacks his own dissent; the curing clauses turn out to be the same for pharmacy and remittance, which is the finding.
 - 2026-09-13 — Payers are invented archetypes ("Cadena farmacéutica A", "Remesadora de grupo financiero"), never real company names — no impersonation or defamation; the real companies stay in my brief as evidence.
 - 2026-09-13 — No persistence, no auth, no DB — nothing personal is stored; fictional data only; PII guard blocks CURP/RFC/NSS/phone/email before anything reaches the model (security floor + Condition 6).
