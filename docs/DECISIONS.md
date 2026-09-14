@@ -7,6 +7,8 @@
 ---
 
 <!-- newest first: YYYY-MM-DD — decision — why -->
+- 2026-09-13 — Persona RE-TEST (deploy #4 → 0 task blockers) → deploy #5: R05 (payer gets patient names + phones) RIESGO → BLOQUEA, rules v0.1.2, cure names the clause; button "Corregir: el contrato dice «…»" (the old label read like consenting to share phones); /comparar Farmacia B card warns its contract fails — Lupita: "si la farmacia tiene la lista de mi programa, ya sabe que mis señoras salieron mal de azúcar"; the Blueprint gives sponsors aggregates only, so the adversary agrees with the user.
+- 2026-09-13 — No payer amounts or tie-breaker on /comparar — payers are invented archetypes and the Blueprint records "no payer willingness is proven"; inventing money would fabricate evidence.
 - 2026-09-13 — NOT fixed this week: /ruta form-first layout, "which papers she is missing" for registration requirements, a concrete action for the transport barrier, course context on the home page — all FRENA/MENOR, and the persona got the right window and deadline on /ruta; the blocking confusions were on /canal and /comparar.
 - 2026-09-13 — Rule R25 added (payer *suggests* its own branches = RIESGO, Condition 4), rules → v0.1.1 — the packet promised "sugiere → RIESGO" but no rule did it; the persona walk exposed the gap (Farmacia B's "se sugerirá el de la Farmacia" changed nothing).
 - 2026-09-13 — /comparar answers first ("same four conditions → either works; watch the route with a pharmacy, the data with a remittance group") and hides the rule×payer table behind a details — persona blocker #30: "Me voy sin saber cuál me conviene"; "Yo defendí la remesa" read as bias and was removed from the user-facing page (it stays in the packet and DECISIONS).
