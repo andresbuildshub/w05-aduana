@@ -32,3 +32,14 @@ Kept verbatim in `lib/lector.js`. Design choices worth reusing:
 - "Cite verbatim or don't report": the rule is stated in the prompt AND enforced in code; the prompt alone is not trusted.
 - Output is split into *hallazgos* (clause violates a condition) and *contradicciones* (declared term sheet ≠ text): the second is where the LLM adds value the rules cannot.
 - "A clause that PROHIBITS a misuse is not a finding" — added after thinking through the firewall preset.
+- After the persona test, contradictions also return `valor_segun_texto` (an option key of that field): the model proposes the corrected term, the coordinator confirms with one tap, the rules recalculate. The model still never decides.
+
+## 3. Persona test prompt (fresh agent, no build context)
+
+```
+You are running a PERSONA TEST. Only use Read to view the screenshots, then Write one file.
+Persona: Lupita Méndez, 38, enfermera general. Coordina un piloto de navegación de pacientes (resultado anormal de diabetes tipo 2) en una farmacia de Tuxtla Gutiérrez, Chiapas. Lee contratos en el celular entre turnos. Nunca ha usado IA para trabajar. Desconfía de la letra chiquita pero se cansa con textos largos. Si no entiende un término técnico, lo ignora en silencio y sigue (o se va). No es abogada.
+Tasks: (1) Cadena farmacéutica B le ofreció dinero: ¿lo firmo o no, y qué les pido que cambien? (2) ¿Me conviene más la farmacia o la remesadora? (3) Paciente ficticia (50–59, Chiapas, sin seguridad social, informal, celular básico, transporte): ¿a dónde la mando, qué papeles lleva y qué sigue?
+Read EVERY screenshot in order (home → /canal → lectura → /comparar → /ruta). Narrate AS LUPITA, first person: where she hesitates, which words she doesn't understand, where she'd give up silently. Be honest, not nice.
+Output: narration per screen · confusion log table (# | pantalla | qué intentaba | qué no entendió | sus palabras | BLOQUEA TAREA / FRENA / MENOR) · did she complete each task · top-3 fixes with the concrete change.
+```
