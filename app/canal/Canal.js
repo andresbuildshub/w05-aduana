@@ -105,7 +105,7 @@ export default function Canal() {
         ) : pendientes.length ? (
           <>
             <p className="mt-1 text-3xl font-extrabold">NO FIRMES TODAVÍA</p>
-            <p className="mt-2 text-sm text-neutral-200">El contrato no dice lo mismo que te dijeron: {pendientes.length} diferencia(s). Abajo, en cada una, toca <b>Usar lo que dice el contrato</b> y la respuesta se vuelve a calcular.</p>
+            <p className="mt-2 text-sm text-neutral-200">El contrato no dice lo mismo que te dijeron: {pendientes.length} diferencia(s). Abajo, en cada una, toca <b>Corregir</b> para que la respuesta tome en cuenta lo que de verdad dice el contrato.</p>
           </>
         ) : (
           <>
@@ -224,7 +224,7 @@ function Lectura({ l, t, revisadas, onUsar }) {
               <p>{c.explicacion}</p>
               {yaCorregido(t, c) ? <p className="mt-2 text-emerald-300">✓ La respuesta de arriba ya usa lo que dice el contrato.</p>
                 : revisadas.includes(i) ? <p className="mt-2 text-emerald-300">✓ Marcada para corregir a mano (abajo, en "Lo que te prometieron").</p>
-                : <button onClick={() => onUsar(c, i)} className="mt-2 rounded-lg bg-amber-300 px-3 py-1.5 font-semibold text-neutral-950">{c.valor ? `Usar lo que dice el contrato: ${CAMPOS[c.campo].opciones[c.valor]}` : 'Lo corrijo yo'}</button>}
+                : <button onClick={() => onUsar(c, i)} className="mt-2 rounded-lg bg-amber-300 px-3 py-1.5 font-semibold text-neutral-950">{c.valor ? `Corregir: el contrato dice «${CAMPOS[c.campo].opciones[c.valor]}»` : 'Lo corrijo yo'}</button>}
             </article>
           ))}
         </div>

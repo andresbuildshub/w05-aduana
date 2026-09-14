@@ -42,6 +42,7 @@ export default function Comparar() {
             <p className="text-sm font-semibold">{CORTO[p.id]}</p>
             <p className="mt-1 text-lg font-extrabold">{decisionSimple(r).titulo}</p>
             <p className="text-xs text-neutral-400">según lo que promete · {r.hallazgos.filter(h => h.sev === 'BLOQUEA').length} reglas bloquean</p>
+            {p.id === 'farmacia-fija' && <p className="mt-1 text-xs font-semibold text-amber-200">⚠ Pero su contrato dice otra cosa: al revisarlo termina en NO LO FIRMES ASÍ.</p>}
           </div>
         ))}
       </section>
