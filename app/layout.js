@@ -20,8 +20,7 @@ export default function RootLayout({ children }) {
         </header>
         <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
         <footer className="mx-auto max-w-5xl px-4 pb-10 pt-6 text-xs leading-relaxed text-neutral-500">
-          Pagadores, contratos y casos son <b>ficticios</b>. Nada se guarda. La lectura de contratos usa un LLM real vía Vercel AI Gateway cuando está disponible; si no, una <b>simulación etiquetada</b>.
-          La IA nunca decide el veredicto: lo deciden reglas públicas. No es asesoría legal ni médica. Proyecto de curso de Andrés Álvarez Morphy (Crystal Ball Studio, semana 5, Blueprint del equipo T2).
+          Ejemplos inventados · nada se guarda · no es asesoría legal ni médica · proyecto de curso de Andrés Álvarez Morphy (Crystal Ball Studio, semana 5).
         </footer>
       </body>
     </html>

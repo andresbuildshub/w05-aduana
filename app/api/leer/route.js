@@ -15,7 +15,7 @@ const Entrada = z.object({ terminos: z.object(hoja).strict(), texto: z.string().
 // Sin límites numéricos en el esquema del modelo: se validan y recortan después, en verificarCitas.
 const Lectura = z.object({
   hallazgos: z.array(z.object({ condicion: z.number(), cita: z.string(), problema: z.string(), pregunta: z.string() })),
-  contradicciones: z.array(z.object({ campo: z.string(), declarado: z.string(), cita: z.string(), explicacion: z.string() })),
+  contradicciones: z.array(z.object({ campo: z.string(), declarado: z.string(), cita: z.string(), explicacion: z.string(), valor_segun_texto: z.string() })),
 })
 
 const golpes = new Map()

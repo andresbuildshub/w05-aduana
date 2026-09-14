@@ -1,7 +1,7 @@
 // node --test test/  — pruebas mecánicas del plan (docs/PACKET.md)
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { PRESETS, evaluar } from '../lib/reglas.js'
+import { PRESETS, evaluar, decisionSimple } from '../lib/reglas.js'
 import { evaluarRuta, CASO_EJEMPLO } from '../lib/ruta.js'
 import { detectarPII } from '../lib/pii.js'
 import { leerSimulado, verificarCitas } from '../lib/lector.js'
@@ -71,6 +71,15 @@ test('lector simulado encuentra las dos contradicciones de Farmacia B', () => {
   assert.deepEqual(r.contradicciones.map(c => c.campo).sort(), ['datosPagador', 'dirigeRuta'])
   assert.equal(r.descartados.length, 0)
   assert.ok(!r.hallazgos.some(h => /no usará/.test(h.cita)), 'una prohibición no es hallazgo')
+  assert.deepEqual(r.contradicciones.map(c => c.valor).sort(), ['nombre_contacto', 'sugiere'])
+})
+
+test('fix de la prueba con persona: al usar lo que dice el contrato, Farmacia B pasa a "NO LO FIRMES ASÍ"', () => {
+  const t = P['farmacia-fija'].terminos
+  assert.equal(decisionSimple(evaluar(t)).titulo, 'SE PUEDE FIRMAR, DESPUÉS DE VERIFICAR')
+  const corregido = evaluar({ ...t, datosPagador: [...t.datosPagador, 'nombre_contacto'], dirigeRuta: 'sugiere' })
+  assert.ok(['R05', 'R25'].every(id => ids(corregido).includes(id)))
+  assert.equal(decisionSimple(corregido).titulo, 'NO LO FIRMES ASÍ')
 })
 
 const HOY = new Date('2026-09-13T12:00:00')
