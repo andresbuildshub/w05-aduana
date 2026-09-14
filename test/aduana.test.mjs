@@ -45,6 +45,9 @@ test('d) hijo migrante que quiere saber → NO CRUZA; el familiar ve lo que no d
 test('e) guardia de datos personales', () => {
   assert.ok(detectarPII('La paciente GOMA560712MCSRRN08 firmó').includes('CURP'))
   assert.ok(detectarPII('llamar al 961 123 4567').includes('teléfono'))
+  // bug encontrado en producción: el punto final escondía el teléfono
+  assert.ok(detectarPII('Contacto de la paciente: 961 123 4567.').includes('teléfono'))
+  assert.ok(detectarPII('Tel. 9611234567, gracias').includes('teléfono'))
   assert.ok(detectarPII('escribir a rosa.perez@correo.mx').includes('correo'))
   for (const p of PRESETS) assert.deepEqual(detectarPII(p.texto), [], p.id)
 })
@@ -80,6 +83,12 @@ test('i) caso ejemplo en Chiapas → IMSS-Bienestar, Seguro Familia no es ruta, 
   assert.equal(r.estado, 'ABIERTO — BARRERA POR RESOLVER')
   assert.equal(r.tarjeta.fechaLimite, '2026-09-27')
   assert.deepEqual(r.faltantes, [])
+})
+
+test('bug encontrado en producción: de noche en CDMX la fecha límite no se corre un día (UTC)', () => {
+  const r = evaluarRuta(CASO_EJEMPLO, new Date('2026-09-13T23:30:00'))
+  assert.equal(r.tarjeta.fechaLimite, '2026-09-27')
+  assert.doesNotMatch(r.tarjeta.siguienteAccion, /\d{4}-\d{2}-\d{2}/)
 })
 
 test('i) sin seguridad social en Jalisco → servicios estatales, no IMSS-Bienestar', () => {

@@ -1,5 +1,5 @@
 'use client'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { CAMPOS_RUTA, CASO_EJEMPLO, evaluarRuta } from '../../lib/ruta.js'
 import { Ficticio, TONO } from '../ui'
 
@@ -14,7 +14,10 @@ const fecha = iso => new Date(iso + 'T12:00:00').toLocaleDateString('es-MX', { d
 
 export default function Ruta() {
   const [c, setC] = useState(CASO_EJEMPLO)
-  const r = useMemo(() => evaluarRuta(c), [c])
+  // "Hoy" se calcula en el teléfono de quien usa la página, no en el build (evita una fecha congelada en el HTML estático).
+  const [hoy, setHoy] = useState(null)
+  useEffect(() => setHoy(new Date()), [])
+  const r = useMemo(() => evaluarRuta(c, hoy || new Date()), [c, hoy])
   const cambiar = (k, v) => setC(prev => ({ ...prev, [k]: v }))
   const alternarDoc = v => cambiar('docs', c.docs.includes(v) ? c.docs.filter(x => x !== v) : [...c.docs, v])
 
@@ -38,7 +41,7 @@ export default function Ruta() {
           {[
             ['Siguiente acción', r.tarjeta.siguienteAccion],
             ['Dueña', r.tarjeta.duena],
-            ['Fecha límite', fecha(r.tarjeta.fechaLimite)],
+            ['Fecha límite', hoy ? fecha(r.tarjeta.fechaLimite) : '…'],
             ['Barrera', r.tarjeta.causa && r.tarjeta.causa !== '—' ? `${r.tarjeta.barrera} (${r.tarjeta.causa})` : r.tarjeta.barrera],
             ['Escalamiento', r.tarjeta.escalamiento],
             ['Cómo contactarla', r.tarjeta.canal],
