@@ -58,6 +58,7 @@ export async function POST(req) {
     console.error('gateway:', e?.name, msg.slice(0, 200))
     modo = 'simulado'
     razon = /credit card|customer_verification/i.test(msg) ? 'El equipo de Vercel todavía no tiene tarjeta registrada, así que AI Gateway no atiende solicitudes.'
+      : /free tier|no_providers_available|rate.?limit/i.test(msg) ? 'El plan gratuito de AI Gateway no permite este modelo o limitó las solicitudes; la IA real se activa con créditos pagados.'
       : /insufficient|quota|budget/i.test(msg) ? 'AI Gateway se quedó sin crédito.'
       : 'AI Gateway no respondió.'
     crudo = leerSimulado(texto, terminos)

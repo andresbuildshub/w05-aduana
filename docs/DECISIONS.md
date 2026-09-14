@@ -2,11 +2,12 @@
 
 > Session close ritual, every session: one line per decision with the why, tomorrow's first move at the top, commit, push. This file is where the Week 12 Extraction gets mined from.
 
-**Tomorrow's first move:** add a card to the class19 team so AI Gateway serves requests → re-run /canal on "Farmacia B" with the real model and compare its contradictions with the simulated reader's two; then /ruta form-first (persona confusions #34, #40, #46).
+**Tomorrow's first move:** /ruta form-first (persona confusions #34, #40, #46). Real LLM only if paid Gateway credits are bought later: then re-run /canal on "Farmacia B" and compare the model's contradictions with the simulated reader's two.
 
 ---
 
 <!-- newest first: YYYY-MM-DD — decision — why -->
+- 2026-09-13 — Card added to class19 → $5 free Gateway credits, BUT free tier returns 403 "no access to this model" for every Anthropic model (and DeepSeek) and 429 "free tier requests on this model are rate-limited" for every other model tried, including the 7 tagged `free`. Operator chose to KEEP THE READER SIMULATED rather than buy paid credits. The on-screen reason now names the free-tier block — the label must say why the AI is not real, not just that it isn't. Code path unchanged: paid credits later = real `claude-sonnet-5`, no redeploy.
 - 2026-09-13 — Persona RE-TEST (deploy #4 → 0 task blockers) → deploy #5: R05 (payer gets patient names + phones) RIESGO → BLOQUEA, rules v0.1.2, cure names the clause; button "Corregir: el contrato dice «…»" (the old label read like consenting to share phones); /comparar Farmacia B card warns its contract fails — Lupita: "si la farmacia tiene la lista de mi programa, ya sabe que mis señoras salieron mal de azúcar"; the Blueprint gives sponsors aggregates only, so the adversary agrees with the user.
 - 2026-09-13 — No payer amounts or tie-breaker on /comparar — payers are invented archetypes and the Blueprint records "no payer willingness is proven"; inventing money would fabricate evidence.
 - 2026-09-13 — NOT fixed this week: /ruta form-first layout, "which papers she is missing" for registration requirements, a concrete action for the transport barrier, course context on the home page — all FRENA/MENOR, and the persona got the right window and deadline on /ruta; the blocking confusions were on /canal and /comparar.
