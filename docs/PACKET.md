@@ -72,7 +72,8 @@ flowchart LR
   end
   subgraph ADUANA[Aduana — reglas deterministas]
     a1[Evalúa 14 campos contra reglas v0.1] --> a2[Veredicto + matriz de exposición]
-    a3[Guardia de datos personales] --> a4[Verifica cada cita textual]
+    a3[Guardia de datos personales]
+    a4[Verifica cada cita textual]
   end
   subgraph IA[LLM vía AI Gateway]
     i1[Lee el acuerdo como adversario: hallazgos + contradicciones]
@@ -87,7 +88,6 @@ flowchart LR
   c2 --> a3 --> i1 --> a4 --> c3
   a2 --> c3
   c3 -. si firma con cláusulas .-> p1
-  n1 --> n2
 ```
 
 ## Benchmark
